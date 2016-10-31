@@ -1,0 +1,32 @@
+{
+  "name": "yarn-bin-fix",
+  "version": "0.1.0",
+  "description": "Fix for yarn's #760, puts all executables from node_modules into .bin, as npm usually does",
+  "license": "MIT",
+  "author": "Daniel Zlotin <zlotindaniel@gmail.com>",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wix/yarn-bin-fix.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wix/yarn-bin-fix/issues"
+  },
+  "homepage": "https://github.com/wix/yarn-bin-fix",
+  "main": "index.js",
+  "bin": {
+    "yarn-bin-fix": "yarn-bix-fix.js"
+  },
+  "scripts": {
+    "build": ":",
+    "test": ":",
+    "release": "npm version patch && npm publish && git push"
+  },
+  "dependencies": {
+    "lodash": "^4.12.0"
+  },
+  "devDependencies": {
+  }
+}
