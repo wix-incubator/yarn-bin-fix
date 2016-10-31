@@ -17,7 +17,7 @@
   "homepage": "https://github.com/wix/yarn-bin-fix",
   "main": "index.js",
   "bin": {
-    "yarn-bin-fix": "yarn-bix-fix.js"
+    "yarn-bin-fix": "./bin/yarn-bin-fix.js"
   },
   "scripts": {
     "build": ":",
