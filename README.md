@@ -5,4 +5,4 @@ fix for yarn's [#760](https://github.com/yarnpkg/yarn/issues/760)
 `npm i -g yarn-bin-fix`
 
 ## Usage
-after installing your module using `yarn`, run ``
+after installing your module using `yarn`, run `yarn-bin-fix` from your project's root
