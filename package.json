@@ -1,6 +1,6 @@
 {
   "name": "yarn-bin-fix",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fix for yarn's #760, puts all executables from node_modules into .bin, as npm usually does",
   "license": "MIT",
   "author": "Daniel Zlotin <zlotindaniel@gmail.com>",
@@ -27,6 +27,5 @@
   "dependencies": {
     "lodash": "^4.12.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
