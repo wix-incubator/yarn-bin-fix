@@ -46,7 +46,7 @@ function linkExecutablesFromPackage(pkgJsonFile, pkg) {
     const dst = p.resolve(p.dirname(pkgJsonFile), pth);
     if (!fs.existsSync(src)) {
       console.log(`linking ${src}`);
-      createBinFolder(`ln -s ${dst} ${src}`);
+      execSilently(`ln -s ${dst} ${src}`);
     }
   });
 }
