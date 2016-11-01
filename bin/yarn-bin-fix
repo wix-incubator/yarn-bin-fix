@@ -11,7 +11,7 @@ const nodeModules = p.join(process.cwd(), 'node_modules');
 const bin = p.join(nodeModules, '.bin');
 
 function execSilently(cmd) {
-  cp.execSync(`${cmd} || true`, {stdio: [0, 1, 'ignore']});
+  cp.execSync(`${cmd} || true`, {stdio: ['ignore', 'ignore', 'ignore']});
 }
 
 function execRead(cmd) {
