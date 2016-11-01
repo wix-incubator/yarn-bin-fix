@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+
+console.log(`running yarn-bin-fix...`);
+
 const cp = require('child_process');
 const p = require('path');
 const fs = require('fs');
@@ -11,7 +15,7 @@ function createBinFolder() {
 }
 
 function findAllPackageJsonsFiles() {
-  const found = String(cp.execSync(`find ${nodeModules} -type f -name 'package.json'`));
+  const found = String(cp.execSync(`find ${nodeModules} -type f -name 'package.json'`, {stdio: ['pipe', 'pipe', 'pipe']}));
   return _.split(found, '\n');
 }
 
@@ -33,6 +37,7 @@ function linkExecutablesFromPackage(pkgJsonFile, pkg) {
     const src = p.join(bin, name);
     const dst = p.resolve(p.dirname(pkgJsonFile), pth);
     if (!fs.existsSync(src)) {
+      console.log(`linking ${src}`);
       cp.execSync(`ln -s ${dst} ${src} || true`, {stdio: [0, 1, 'ignore']});
     }
   });
@@ -40,8 +45,10 @@ function linkExecutablesFromPackage(pkgJsonFile, pkg) {
 
 function run() {
   createBinFolder();
+  console.log(`bin dir is ${bin}`);
   const packageJsonsFiles = findAllPackageJsonsFiles();
   linkExecutables(packageJsonsFiles);
+  console.log(`DONE. you can enjoy your life now`);
 }
 
 run();
