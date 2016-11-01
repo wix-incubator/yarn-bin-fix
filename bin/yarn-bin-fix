@@ -10,12 +10,20 @@ const _ = require('lodash');
 const nodeModules = p.join(process.cwd(), 'node_modules');
 const bin = p.join(nodeModules, '.bin');
 
+function execSilently(cmd) {
+  cp.execSync(`${cmd} || true`, {stdio: [0, 1, 'ignore']});
+}
+
+function execRead(cmd) {
+  return String(cp.execSync(cmd, {stdio: ['pipe', 'pipe', 'pipe']}));
+}
+
 function createBinFolder() {
-  cp.execSync(`mkdir ${bin} || true`);
+  execSilently(`mkdir ${bin}`);
 }
 
 function findAllPackageJsonsFiles() {
-  const found = String(cp.execSync(`find ${nodeModules} -type f -name 'package.json'`, {stdio: ['pipe', 'pipe', 'pipe']}));
+  const found = execRead(`find ${nodeModules} -type f -name 'package.json'`);
   return _.split(found, '\n');
 }
 
@@ -38,7 +46,7 @@ function linkExecutablesFromPackage(pkgJsonFile, pkg) {
     const dst = p.resolve(p.dirname(pkgJsonFile), pth);
     if (!fs.existsSync(src)) {
       console.log(`linking ${src}`);
-      cp.execSync(`ln -s ${dst} ${src} || true`, {stdio: [0, 1, 'ignore']});
+      createBinFolder(`ln -s ${dst} ${src}`);
     }
   });
 }
