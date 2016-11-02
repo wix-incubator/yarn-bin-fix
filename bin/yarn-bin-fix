@@ -30,8 +30,12 @@ function findAllPackageJsonsFiles() {
 function linkExecutables(packageJsonsFiles) {
   _.forEach(packageJsonsFiles, (pkgFile) => {
     if (fs.existsSync(pkgFile)) {
-      const pkg = JSON.parse(fs.readFileSync(pkgFile));
-      linkExecutablesFromPackage(pkgFile, pkg);
+      try {
+        const pkg = JSON.parse(fs.readFileSync(pkgFile));
+        linkExecutablesFromPackage(pkgFile, pkg);
+      } catch (e) {
+        console.log(`can't parse ${pkgFile}`);
+      }
     }
   });
 }
@@ -56,7 +60,7 @@ function run() {
   console.log(`bin dir is ${bin}`);
   const packageJsonsFiles = findAllPackageJsonsFiles();
   linkExecutables(packageJsonsFiles);
-  console.log(`DONE. you can enjoy your life now`);
+  console.log(`DONE`);
 }
 
 run();
