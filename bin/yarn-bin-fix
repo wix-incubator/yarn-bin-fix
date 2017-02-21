@@ -19,11 +19,11 @@ function execRead(cmd) {
 }
 
 function createBinFolder() {
-  execSilently(`mkdir ${bin}`);
+  execSilently(`mkdir "${bin}"`);
 }
 
 function findAllPackageJsonsFiles() {
-  const found = execRead(`find ${nodeModules} -type f -name 'package.json'`);
+  const found = execRead(`find "${nodeModules}" -type f -name 'package.json'`);
   return _.split(found, '\n');
 }
 
@@ -50,7 +50,7 @@ function linkExecutablesFromPackage(pkgJsonFile, pkg) {
     const dst = p.resolve(p.dirname(pkgJsonFile), pth);
     if (!fs.existsSync(src)) {
       console.log(`linking ${src}`);
-      execSilently(`ln -s ${dst} ${src}`);
+      execSilently(`ln -s "${dst}" "${src}"`);
     }
   });
 }
