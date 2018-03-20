@@ -23,7 +23,7 @@ function createBinFolder() {
 }
 
 function findAllPackageJsonsFiles() {
-  const found = execRead(`find ${nodeModules} -type f -name 'package.json'`);
+  const found = execRead(`find -L ${nodeModules} -type f -name 'package.json'`);
   return _.split(found, '\n');
 }
 
