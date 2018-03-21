@@ -1,7 +1,7 @@
 {
   "name": "yarn-bin-fix",
   "version": "0.1.15",
-  "description": "Fix for yarn's #760, puts all executables from node_modules into .bin, as npm usually does",
+  "description": "Workaround for npm-link re binaries of packages' subdependencies",
   "license": "MIT",
   "author": "Daniel Zlotin <zlotindaniel@gmail.com>",
   "publishConfig": {
