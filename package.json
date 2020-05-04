@@ -22,10 +22,14 @@
   "scripts": {
     "build": ":",
     "test": ":",
-    "release": "npm version patch && npm publish && git push"
+    "release": "npm version patch && npm publish && git push",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
-    "lodash": "^4.12.0"
+    "lodash": "^4.12.0",
+    "snyk": "^1.317.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "snyk": true
 }
